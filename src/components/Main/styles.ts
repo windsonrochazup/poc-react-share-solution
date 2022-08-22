@@ -15,6 +15,7 @@ export const Wrapper = styled.main`
 
 export const ButtonContent = styled.div`
   display: flex;
+  flex-direction: column;
   place-items: center;
 `
 

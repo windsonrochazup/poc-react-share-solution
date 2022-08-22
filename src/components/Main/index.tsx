@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+
 import * as S from './styles'
 
 const Main = () => {
@@ -32,13 +33,13 @@ const Main = () => {
   }, [])
 
   const shareDataImage = useCallback(async () => {
-    const response = await fetch('logo.svg')
+    const response = await fetch('/public/icon-512.png')
 
     const blob = await response.blob()
 
     const filesArray: File[] = [
-      new File([blob], 'logo.jpg', {
-        type: 'image/jpeg',
+      new File([blob], 'icon-512.png', {
+        type: 'image/png',
         lastModified: new Date().getTime()
       })
     ]
