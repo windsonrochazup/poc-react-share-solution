@@ -33,13 +33,15 @@ const Main = () => {
   }, [])
 
   const shareDataImage = useCallback(async () => {
-    const response = await fetch('/public/icon-512.png')
+    const response = await fetch(
+      'https://github.com/benkaiser/web-share-images/blob/5ca1854af8028207c678b9a3470bfce71b765cf3/public/nacho.jpg?raw=true'
+    )
 
     const blob = await response.blob()
 
     const filesArray: File[] = [
-      new File([blob], 'icon-512.png', {
-        type: 'image/png',
+      new File([blob], 'meme.jpg', {
+        type: 'image/jpeg',
         lastModified: new Date().getTime()
       })
     ]
