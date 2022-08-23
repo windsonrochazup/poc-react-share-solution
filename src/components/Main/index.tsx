@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 
-import Receipt from '../../../public/img/receipt.jpeg'
+import Receipt from '../../../public/img/receipt.jpg'
 
 import * as S from './styles'
 
@@ -16,6 +16,20 @@ const Main = () => {
     }
   }, [])
   const shareData = useCallback(async () => {
+    const response = await fetch(Receipt.src)
+
+    console.log('response', response)
+
+    const blob = await response.blob()
+    const filesArray: File[] = [
+      new File([blob], 'receipt.jpg', {
+        type: 'image/jpeg',
+        lastModified: new Date().getTime()
+      })
+    ]
+
+    console.log('filesArray', filesArray)
+
     const content = {
       title: 'MDN',
       text: 'Aprenda desenvolvimento web no MDN!',
