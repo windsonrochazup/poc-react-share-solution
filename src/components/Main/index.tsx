@@ -27,10 +27,12 @@ const Main = () => {
     try {
       await navigator.share(content)
       console.log('share via native share api')
-    } catch (err) {
+    } catch (err: any) {
+      console.error('navigator share api not supported')
       try {
-        console.log('share via email')
+        console.log('trying share via email')
       } catch (error: any) {
+        console.error('failed share via email')
         throw new Error(error?.message)
       }
       console.error(JSON.stringify(err, null, 2))
