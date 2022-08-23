@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 
-import Nina from '../../../public/img/nina.jpeg'
+import Receipt from '../../../public/img/receipt.jpeg'
 
 import * as S from './styles'
 
@@ -36,7 +36,7 @@ const Main = () => {
   }, [])
 
   const shareDataImage = useCallback(async () => {
-    const response = await fetch(Nina.src)
+    const response = await fetch(Receipt.src)
 
     console.log('response', response)
 
@@ -74,7 +74,7 @@ const Main = () => {
 
   return (
     <S.Wrapper>
-      <Image src={Nina} id="picture" />
+      <Image src={Receipt} />
       {!canShare ? (
         <S.Button onClick={() => shareData()}>share via email 📩</S.Button>
       ) : (

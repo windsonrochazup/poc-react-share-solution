@@ -48,7 +48,7 @@ export const Button = styled.button`
     transition-duration: 0.1s;
   }
 
-  & + button {
+  & > button {
     padding-top: 20px;
   }
 `
