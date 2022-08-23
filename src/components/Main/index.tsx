@@ -1,4 +1,7 @@
+import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
+
+import Nina from '../../../public/img/nina.jpeg'
 
 import * as S from './styles'
 
@@ -33,25 +36,31 @@ const Main = () => {
   }, [])
 
   const shareDataImage = useCallback(async () => {
-    const response = await fetch(
-      'https://github.com/benkaiser/web-share-images/blob/5ca1854af8028207c678b9a3470bfce71b765cf3/public/nacho.jpg?raw=true'
-    )
+    const response = await fetch(Nina.src)
+
+    console.log('response', response)
 
     const blob = await response.blob()
 
+    console.log('blob', blob)
+
     const filesArray: File[] = [
-      new File([blob], 'meme.jpg', {
+      new File([blob], 'nininha.jpeg', {
         type: 'image/jpeg',
         lastModified: new Date().getTime()
       })
     ]
 
+    console.log('filesArray', filesArray)
+
     const content = {
-      files: filesArray
+      files: filesArray,
+      title: 'Meu neném',
+      text: '🐶 Nina linda 💟'
     }
 
     try {
-      if (navigator.canShare && navigator.canShare(content)) {
+      if (navigator.canShare && navigator.canShare({ files: content.files })) {
         await navigator.share(content)
         console.log('share via native share api')
       } else {
@@ -65,6 +74,7 @@ const Main = () => {
 
   return (
     <S.Wrapper>
+      <Image src={Nina} id="picture" />
       {!canShare ? (
         <S.Button onClick={() => shareData()}>share via email 📩</S.Button>
       ) : (

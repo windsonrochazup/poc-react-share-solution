@@ -49,6 +49,6 @@ export const Button = styled.button`
   }
 
   & + button {
-    padding-left: 20px;
+    padding-top: 20px;
   }
 `
