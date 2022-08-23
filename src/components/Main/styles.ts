@@ -20,6 +20,9 @@ export const ButtonContent = styled.div`
 `
 
 export const Button = styled.button`
+  margin-top: 20px;
+  display: flex;
+  place-items: center;
   background-image: linear-gradient(
     92.88deg,
     #455eb5 9.16%,
@@ -46,9 +49,5 @@ export const Button = styled.button`
   &:hover {
     box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
     transition-duration: 0.1s;
-  }
-
-  & > button {
-    padding-top: 20px;
   }
 `
